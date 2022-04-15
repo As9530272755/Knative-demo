@@ -1,0 +1,15 @@
+apiVersion: sources.knative.dev/v1
+kind: PingSource
+metadata:
+  name: ping-00002
+  namespace: default
+spec:
+  schedule: "* * * * *"
+  contentType: "application/json"
+  data: '{"message": "PING 22222!"}'
+  sink:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: event-display
+      namespace: default
